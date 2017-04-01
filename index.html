@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+</head>
+<body ng-controller="myController">
+		<div ng-style="{width: mainDivStyleParams.width + 'px',height: mainDivStyleParams.height + 'px','border-color': 'red','border-width': '1px','border-style': 'solid'}">
+			<h3>{{title}}</h3>
+			<p>name：<input type="text" ng-if="displayNameInputFlag"></p>
+			<p><input type="button" ng-show="!displayNameInputFlag" ng-click="displayNameInputFlag = true" value="显示NameInput">
+			<input type="button" ng-show="displayNameInputFlag" ng-click="displayNameInputFlag = false" value="隐藏NameInput"></p>
+
+			<p>file：<input type="file" ng-if="displayFileInputFlag"></p>
+			<p><input type="button" ng-click="displayFileInputFlag = !displayFileInputFlag" value="切换显示FileInput"></p>
+
+			<p ng-show="showMessageFlag">Message：{{message}}</p>
+			<p><input type="button" ng-click="showMessageFlag = !showMessageFlag" value="{{showMessageFlag ? '隐藏' : '显示'}}Message"></p>
+			
+			<p>
+				编辑Message：<textarea rows="3" cols="20" ng-model="message"></textarea>
+			</p>
+			
+		</div>
+		<input type="button" ng-show="mainDivStyleParams.width >= 400" ng-click="changeSize(-1)" value="变小">
+		<input type="button" ng-show="mainDivStyleParams.width <= 700" ng-click="changeSize(1)" value="变大">
+		<select multiple="">
+			<option>11111111</option>
+			<option>11111111</option>
+			<option>11111111</option>
+			<option>11111111</option>
+			<option>11111111</option>
+			<option>11111111</option>
+		</select>
+</body>
+<script src="js/angular.min.js"></script>
+<script>
+angular.module('myApp',[])  
+    .controller('myController',function($scope){
+    	// 
+    	$scope.mainDivStyleParams = {
+    		width:800,
+    		height:500
+    	}; 
+
+
+    	// 改变数据（mainDivStyleParams）会会体现在界面上
+    	$scope.changeSize = function(changeType){
+    		if(changeType < 0){
+				if($scope.mainDivStyleParams.width >= 400){
+					$scope.mainDivStyleParams.width -= 100;
+	    		}
+	    		if($scope.mainDivStyleParams.height >= 200){
+					$scope.mainDivStyleParams.height -= 50;
+	    		}
+    		}else if(changeType > 0){
+    			if($scope.mainDivStyleParams.width <= 700){
+					$scope.mainDivStyleParams.width += 100;
+	    		}
+	    		if($scope.mainDivStyleParams.height <= 450){
+					$scope.mainDivStyleParams.height += 50;
+	    		}
+    		}
+    		
+    	}
+
+
+    	$scope.title= "双向绑定Title";
+    	$scope.displayNameInputFlag = false; // 默认不显示
+    	$scope.displayFileInputFlag = true; // 默认显示
+    	$scope.message = "初始化信息";
+    	$scope.showMessageFlag = true;
+		
+    }) ;  
+
+     
+    
+</script>
+</html>
