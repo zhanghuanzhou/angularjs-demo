@@ -5,7 +5,7 @@ angular.module('my-components')
 	        	width: "@",
 	        	size: "@",
 	            options: '=',
-	            onChanged: '&'
+	            onChanged: '='
 	        },
 	        restrict: 'E',
 	        controller:['$scope',function($scope){
@@ -13,13 +13,15 @@ angular.module('my-components')
 
 	        	$scope.clickEvent = function(option){
 	        		if(option != $scope.lastSelectedOption){
-	        			$scope.onChanged(getValue(option), getValue(option));
+	        			if (!angular.isUndefined($scope.onChanged)){
+		        			$scope.onChanged(getValue(option), getValue($scope.lastSelectedOption));
+	        			}
 	        			$scope.lastSelectedOption = option;
 	        		}
 	        	}
 
 	        	function getValue(option){
-	        		if(option == null){
+	        		if(angular.isUndefined(option) || option === null){
 	        			return null;
 	        		}
 	        		if (angular.isObject(option)){

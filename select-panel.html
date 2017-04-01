@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="css/select-panel.css" />
 </head>
 <body ng-controller="myController">
-<select-panel options="options" width="250px" size="5"></select-panel>
+<select-panel options="options" width="250px" size="5" on-changed="onChanged"></select-panel>
 <select multiple="multiple" size="5">
 	<option>11111111111</option>
 	<option>11111111111</option>
@@ -30,6 +30,10 @@ angular.module('myApp',['my-components'])
 			{"value":"5","text":"555555555555"},
 			{"value":"6","text":"666666666666"}
 		]
+
+		$scope.onChanged = function(newVal, oldVal){
+			console.log("newVal:"+newVal + "--oldVal:" + oldVal);
+		}
 
     }) ;  
 
