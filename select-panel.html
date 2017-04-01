@@ -2,25 +2,7 @@
 <html ng-app="myApp">
 <head>
   <meta charset="utf-8">
-  <style type="text/css">
-  	.select-panel {
-    margin-bottom: 20px;
-    background-color: #ffffff;
-    border: 1px solid blue;
-    border-radius: 4px;
-    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-    overflow-y: auto;
-	}
-	.select-panel ui li{
-		height: 25px;
-		line-height: 25px;
-		list-style-type: none;
-	}
-	.select-panel ui li.active{
-		background-color: #1E90FF;
-	}
-  </style>
+  <link rel="stylesheet" type="text/css" href="css/select-panel.css" />
 </head>
 <body ng-controller="myController">
 <select-panel options="options" width="250px" size="5"></select-panel>
@@ -34,8 +16,10 @@
 </select>
 </body>
 <script src="js/angular.min.js"></script>
+<script src="js/my-components/my-components.js"></script>
+<script src="js/my-components/select-panel.directive.js"></script>
 <script>
-angular.module('myApp',['select-panel'])  
+angular.module('myApp',['my-components'])  
     .controller('myController',function($scope){
     	
 		$scope.options = [
@@ -50,41 +34,7 @@ angular.module('myApp',['select-panel'])
     }) ;  
 
 
-    angular.module('select-panel',[])  
-    .directive('selectPanel',[function(){
-    	return {
-	        scope: {
-	        	width: "@",
-	        	size: "@",
-	            options: '=',
-	            onChanged: '&'
-	        },
-	        restrict: 'E',
-	        controller:['$scope',function($scope){
-	        	$scope.lastSelectedOption = null;
-
-	        	$scope.clickEvent = function(option){
-	        		if(option != $scope.lastSelectedOption){
-	        			$scope.onChanged(getValue(option), getValue(option));
-	        			$scope.lastSelectedOption = option;
-	        		}
-	        	}
-
-	        	function getValue(option){
-	        		if(option == null){
-	        			return null;
-	        		}
-	        		if (angular.isObject(option)){
-	        			return option.value;
-	        		} else {
-	        			return option;
-	        		}
-	        	}
-	        }],
-	        template: '<div class=\"select-panel\" ng-style=\"{width:width!=null?width:\'auto\',height:size!=null?(size*25)+\'px\':\'auto\'}\"><ui><li ng-repeat=\"option in options track by $index\"ng-click=\"clickEvent(option)\"ng-class=\"{active:option==lastSelectedOption}\">{{option.text!=null?option.text:option}}</li></ui></div>'
-	    	
-		}
-    }]) ;  
+    
 
      
     
