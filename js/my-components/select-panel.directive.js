@@ -12,7 +12,7 @@ angular.module('my-components')
 	        	$scope.lastSelectedOption = null;
 
 	        	$scope.clickEvent = function(option){
-	        		if(option != $scope.lastSelectedOption){
+	        		if (option != $scope.lastSelectedOption){
 	        			if (!angular.isUndefined($scope.onChanged)){
 		        			$scope.onChanged(getValue(option), getValue($scope.lastSelectedOption));
 	        			}
@@ -21,7 +21,7 @@ angular.module('my-components')
 	        	}
 
 	        	function getValue(option){
-	        		if(angular.isUndefined(option) || option === null){
+	        		if (angular.isUndefined(option) || option === null){
 	        			return null;
 	        		}
 	        		if (angular.isObject(option)){
