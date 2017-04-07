@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+</head>
+<body ng-controller="myController">
+	<div style="position: relative;left: 0px;top: 0px">
+		<button style="position: absolute;left: 0;top: 0;z-index: 100">fff</button>
+		<div id="div" ng-click="onClickDiv($event)" style="border:1px solid blue;width: 800px;height: 500px;padding: 50px; ">
+			<button id="message">30</button>
+		</div>
+	</div>
+</body>
+<script src="js/angular.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script>
+	angular.module('myApp', []).controller('myController', function($scope){
+    	
+		$scope.onClickDiv = function(evt){
+			if (evt.currentTarget == evt.target){
+    			alert("callback onClickDiv");
+    		}
+		}
+		
+    }) ;  
+
+    // jquery
+    /*$(function(){
+    	$("#div").click(function(evt){
+    		console.log(evt);
+    		if (evt.currentTarget == evt.target){
+    			alert("click div");
+    		}
+    	});
+    });*/
+</script>
+</html>

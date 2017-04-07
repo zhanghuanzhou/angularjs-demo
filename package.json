@@ -1,0 +1,15 @@
+{
+  "name": "angularjs-demo",
+  "version": "1.0.0",
+  "description": "angularjs demo",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.oschina.net:hanley/angularjs-demo.git"
+  },
+  "author": "zhanghaunzhou",
+  "license": "ISC"
+}
