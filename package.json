@@ -2,14 +2,21 @@
   "name": "angularjs-demo",
   "version": "1.0.0",
   "description": "angularjs demo",
-  "main": "",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git@git.oschina.net:hanley/angularjs-demo.git"
+    "url": "git+https://github.com/zhanghuanzhou/angularjs-demo.git"
   },
-  "author": "zhanghaunzhou",
-  "license": "ISC"
+  "keywords": [
+    "abc"
+  ],
+  "author": "zhanghuanzhou",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhanghuanzhou/angularjs-demo/issues"
+  },
+  "homepage": "https://github.com/zhanghuanzhou/angularjs-demo#readme"
 }
